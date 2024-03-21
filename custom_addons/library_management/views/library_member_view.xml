@@ -1,0 +1,27 @@
+<odoo>
+    <record id="view_member_form" model="ir.ui.view">
+        <field name="name">library.member.form</field>
+        <field name="model">library.member</field>
+        <field name="arch" type="xml">
+            <form string="Member">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="membership_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_member_tree" model="ir.ui.view">
+        <field name="name">library.member.tree</field>
+        <field name="model">library.member</field>
+        <field name="arch" type="xml">
+            <tree string="Members">
+                <field name="name"/>
+                <field name="membership_date"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

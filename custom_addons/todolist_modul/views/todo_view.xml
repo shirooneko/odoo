@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Kanban View Definition -->
+        <record model="ir.ui.view" id="view_todo_task_kanban">
+            <field name="name">To-Do List Kanban</field>
+            <field name="model">todo.task</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile" default_group_by="status">
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="deadline" />
+                    <field name="status" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <strong>
+                                            <t t-esc="record.name.value" />
+                                        </strong>
+                                    </h5>
+                                    <p class="card-text">
+                                        <small class="text-muted"> Deadline: <t
+                                                t-esc="record.deadline.value" />
+                                        </small>
+                                    </p>
+                                </div>
+                                <div class="">
+
+                                    <button name="action_edit" type="object" string="Edit"
+                                        class="btn btn-primary mx-3" />
+                                    <button name="action_delete" type="object" string="Hapus"
+                                        class="btn btn-danger" />
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Tree View Definition -->
+        <record model="ir.ui.view" id="view_todo_task_tree">
+            <field name="name">To-Do List</field>
+            <field name="model">todo.task</field>
+            <field name="arch" type="xml">
+                <tree string="To-Do Tasks">
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="deadline" />
+                    <field name="status" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Calendar View Definition -->
+        <record model="ir.ui.view" id="view_todo_task_calendar">
+            <field name="name">To-Do List Calendar</field>
+            <field name="model">todo.task</field>
+            <field name="arch" type="xml">
+                <calendar string="Kalender" date_start="deadline" date_stop="deadline">
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="status" />
+                </calendar>
+            </field>
+        </record>
+
+        <!-- Action to Open Kanban View -->
+        <record model="ir.actions.act_window" id="action_todo_task_tree">
+            <field name="name">To-Do List</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">todo.task</field>
+            <field name="view_mode">kanban,tree,form,calendar</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,7 @@
+<odoo>
+    <record id="genre_action" model="ir.actions.act_window">
+        <field name="name">Genre</field>
+        <field name="res_model">library.genre</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

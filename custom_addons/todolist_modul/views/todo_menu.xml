@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+      <!-- Menu Item to Access Kanban View -->
+      <menuitem
+        id="todo_task_root_menu"
+        name="To-Do List App"
+        sequence="1" />
+  
+      <menuitem
+        id="todo_task_sub_root_menu"
+        name="To-Do List"
+        parent="todo_task_root_menu"
+        sequence="2" />
+  
+      <menuitem
+        id="menu_action_todo_task_tree"
+        name="To-Do List Task"
+        parent="todo_task_sub_root_menu"
+        action="action_todo_task_tree"
+        sequence="3" />
+  
+      <menuitem
+        id="menu_action_todo_task_tree_2"
+        name="Sub menu 2"
+        parent="todo_task_sub_root_menu"
+        action="action_todo_task_tree"
+        sequence="4" />
+    </data>
+  </odoo>

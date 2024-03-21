@@ -1,0 +1,8 @@
+<odoo>
+    <menuitem id="main_library_menu" name="Manajemen Perpustakaan" sequence="10"/>
+    <menuitem id="library_book_menu" name="Buku" parent="main_library_menu" action="book_action" sequence="20" />
+    <menuitem id="library_genre_menu" name="Genre Buku" parent="main_library_menu" action="genre_action" sequence="25" />
+    <menuitem id="library_publisher_menu" name="Penerbit" parent="main_library_menu" action="publisher_action" sequence="30" />
+    <menuitem id="library_member_menu" name="Anggota" parent="main_library_menu" action="member_action" sequence="40" />
+    <menuitem id="library_loan_menu" name="Peminjaman" parent="main_library_menu" action="loan_action" sequence="50" />
+</odoo>

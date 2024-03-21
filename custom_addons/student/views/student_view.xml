@@ -1,0 +1,59 @@
+<odoo>
+
+  <record id="wb_student_tree_view" model="ir.ui.view">
+    <field name="name">wb.student.tree.view</field>
+    <field name="model">wb.student</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name" />
+        <field name="nis" />
+        <field name="alamat"/>
+        <field name="kota"/>
+        <field name="provinsi"/>
+        <field name="negara"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="wb_student_form_view" model="ir.ui.view">
+    <field name="name">wb.student.form.view</field>
+    <field name="model">wb.student</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name" />
+            <field name="nis" />
+            <field name="alamat"/>
+            <field name="kota"/>
+            <field name="provinsi"/>
+            <field name="negara"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="wb_student_action" model="ir.actions.act_window">
+    <field name="name">Students</field>
+    <field name="res_model">wb.student</field>
+    <field name="view_mode">tree,form</field> <!-- Menggunakan mode tampilan yang tepat -->
+  </record>
+
+
+  <menuitem
+    id="wb_student_root_menu"
+    name="Student" />
+
+  <menuitem
+    id="wb_student_sub_root_menu"
+    name="Weblears"
+    parent="wb_student_root_menu" />
+
+  <menuitem
+    id="wb_student_menu"
+    action="wb_student_action"
+    name="Student List"
+    parent="wb_student_sub_root_menu" />
+
+</odoo>

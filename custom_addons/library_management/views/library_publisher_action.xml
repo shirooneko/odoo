@@ -1,0 +1,7 @@
+<odoo>
+    <record id="publisher_action" model="ir.actions.act_window">
+        <field name="name">Penerbit</field>
+        <field name="res_model">library.publisher</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

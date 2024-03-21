@@ -1,0 +1,7 @@
+<odoo>
+    <record id="member_action" model="ir.actions.act_window">
+        <field name="name">Anggota</field>
+        <field name="res_model">library.member</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

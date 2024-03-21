@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+        <!-- Form View Definition -->
+        <record model="ir.ui.view" id="view_todo_task_form">
+            <field name="name">To-Do List Form</field>
+            <field name="model">todo.task</field>
+            <field name="arch" type="xml">
+                <form string="To-Do Task" class="form-horizontal">
+                    <header>
+                        <button name="action_in_progress" type="object" string="Proses"
+                            class="btn btn-primary"
+                            invisible="status=='in_progress' or status=='done'" />
+                        <button name="action_draft" type="object" string="Kembalikan ke draf"
+                            class="btn btn-primary"
+                            invisible="status=='draft' or status=='done'" />
+                        <button name="action_done" type="object" string="Selesai"
+                            class="btn btn-danger" invisible="status=='done'" />
+                        <field name="status" widget="statusbar"
+                            statusbar_visible="draft,in_progress,done" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" class="form-control" placeholder="Nama Tugas"
+                                    readonly="status == 'done'" />
+                            </group>
+                            <group>
+                                <field name="deadline" class="form-control" placeholder="Deadline"
+                                    readonly="status == 'done'" />
+                            </group>
+                        </group>
+                        <field name="description" class="form-control" placeholder="Deskripsi"
+                            readonly="status == 'done'" style="height: 200px;" />
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_todo_task_delete_form" model="ir.ui.view">
+            <field name="name">todo.task.delete.form</field>
+            <field name="model">todo.task.delete</field>
+            <field name="arch" type="xml">
+                <form string="Confirm Deletion">
+                    <field name="confirmation_message" readonly="1" />
+                    <footer>
+                        <button name="confirm" string="Delete" type="object" class="btn-primary" />
+                        <button string="Cancel" class="btn-secondary" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

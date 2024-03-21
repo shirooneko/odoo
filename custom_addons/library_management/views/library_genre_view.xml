@@ -1,0 +1,30 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_genre_tree" model="ir.ui.view">
+        <field name="name">library.genre.tree</field>
+        <field name="model">library.genre</field>
+        <field name="arch" type="xml">
+            <tree string="Genre">
+                <field name="name"/>
+                <field name="book_names"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_genre_form" model="ir.ui.view">
+        <field name="name">library.genre.form</field>
+        <field name="model">library.genre</field>
+        <field name="arch" type="xml">
+            <form string="Genre">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="book_names"/>
+                        <field name="book_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

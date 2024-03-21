@@ -1,0 +1,7 @@
+<odoo>
+    <record id="book_action" model="ir.actions.act_window">
+        <field name="name">Buku</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
