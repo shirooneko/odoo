@@ -1,0 +1,8 @@
+<odoo>
+    <record id="state_action" model="ir.actions.act_window">
+        <field name="name">Onboarding State</field>
+        <field name="res_model">proper.client.onboarding.state</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_client_onboarding_state_tree"/>
+    </record>
+</odoo>

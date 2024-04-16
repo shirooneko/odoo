@@ -1,0 +1,9 @@
+<odoo>
+    <record id="client_action" model="ir.actions.act_window">
+        <field name="name">Client</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="view_proper_client_kanban"/>
+        <field name="domain">[('is_company','=',True)]</field>
+    </record>
+</odoo>

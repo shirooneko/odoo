@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_partner,res.partner,model_res_partner,base.group_user,1,1,1,1
+access_proper_client_contract,proper.client.contract,model_proper_client_contract,base.group_user,1,1,1,1
+access_proper_client_onboarding_task_template,proper.client.onboarding.task_template,model_proper_client_onboarding_task_template,base.group_user,1,1,1,1
+access_proper_client_onboarding_state,proper.client.onboarding.state,model_proper_client_onboarding_state,base.group_user,1,1,1,1
+access_crm_lead,crm.lead,model_crm_lead,base.group_user,1,1,1,1
+access_res_partner_bank,res.partner.bank,model_res_partner_bank,base.group_user,1,1,1,1
+access_terminate_contract_wizard,terminate.contract.wizard,model_terminate_contract_wizard,base.group_user,1,1,1,1

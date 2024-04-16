@@ -1,0 +1,137 @@
+<odoo>
+    <record id="view_proper_client_kanban" model="ir.ui.view">
+        <field name="name">proper.client.kanban</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="inside">
+                <field name="name" />
+                <field name="city" />
+                <field name="country_id" />
+                <field name="avatar_128" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_proper_client_tree" model="ir.ui.view">
+        <field name="name">proper.client.tree</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree string="Proper Client Tree">
+                <field name="name" />
+                <field name="phone" class="o_force_ltr" optional="show" />
+                <field name="email" />
+                <field name="user_id" widget="many2one_avatar_user" />
+                <field name="activity_ids" optional="show" widget="list_activity" />
+                <field name="city" />
+                <field name="state_id" optional="hide" />
+                <field name="country_id" />
+                <field name="category_id" optional="hide" widget="many2many_tags"
+                    options="{'color_field': 'color'}" can_create="True" can_write="True" />
+                <field name="company_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_proper_client_form" model="ir.ui.view">
+        <field name="name">proper.client.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <!-- Menambahkan tombol "Terminate Contract" di atas form atau di dalam bagian header -->
+            <xpath expr="//sheet/div[@name='button_box']" position="before">
+                <widget name="web_ribbon" text="Terminated" bg_color="bg-warning"
+                    invisible="current_contract_state != 'terminated'" />
+                <widget name="web_ribbon" text="Expired" bg_color="bg-danger"
+                    invisible="current_contract_state != 'expired'" />
+            </xpath>
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button name="action_contract" type="object" class="btn btn-danger"
+                        string="Terminate Contract" invisible="current_contract_state != 'active'" />
+                    <field name="current_contract_state" />
+                </header>
+            </xpath>
+            <xpath expr="//field[@name='avatar_128']" position="replace">
+                <field name="avatar_128" invisible="1" class="pr-3" />
+            </xpath>
+            <xpath expr="//field[@name='image_1920']" position="replace">
+                <field name="image_1920" widget="image" class="oe_avatar " options="{&quot;preview_image&quot;: &quot;avatar_128&quot;}" style="margin-right: 12%;" on_change="1"/>
+            </xpath>
+            <!-- Ubah nama halaman "Sales & Purchases" menjadi "Sales" -->
+            <xpath expr="//page[@name='sales_purchases']" position="attributes">
+                <attribute name="string">Sales</attribute>
+            </xpath>
+            <xpath expr="//group[@name='misc']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//group[@name='purchase']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//group[@name='container_row_stock']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//group[@name='fiscal_information']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="is_client" widget="boolean_toggle" />
+            </xpath>
+            <xpath expr="//field[@name='is_client']">
+                <field name="current_contract_state" widget="badge"
+                    decoration-info="current_contract_state == 'draft'"
+                    decoration-warning="current_contract_state == 'terminated'"
+                    decoration-danger="current_contract_state == 'expired'"
+                    decoration-success="current_contract_state == 'active'" />
+            </xpath>
+            <xpath expr="//page[@name='sales_purchases']" position="after">
+                <page name="contracts" string="Contracts">
+                    <field name="client_contract_ids">
+                        <tree create="1">
+                            <field name="contract_number" />
+                            <field name="state" widget="badge"
+                                decoration-danger="state == 'expired'"
+                                decoration-info="state == 'draft'"
+                                decoration-success="state == 'active'"
+                                decoration-warning="state == 'terminated'"
+                            />
+                            <field name="date" />
+                            <field name="end_date" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_contract_form" model="ir.ui.view">
+        <field name="name">contract.form</field>
+        <field name="model">proper.client.contract</field>
+        <field name="arch" type="xml">
+            <form string="Contract">
+                <header>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,active,expired,terminated"
+                        statusbar_colors='{"expired":"red", "terminated":"orange"}' />
+
+                </header>
+                <h1>
+                    <field name="contract_number" readonly="1" />
+                </h1>
+                <sheet>
+                    <group>
+                        <field name="contract_type" widget="selection_badge" />
+                        <field name="date" />
+                        <field name="duration" />
+                        <field name="duration_unit" widget="selection_badge" />
+                        <field name="end_date" readonly="1" />
+                        <field name="value" />
+                        <field name="currency_id" />
+                        <field name="attachment" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

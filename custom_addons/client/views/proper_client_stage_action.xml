@@ -1,0 +1,8 @@
+<odoo>
+    <record id="stage_action" model="ir.actions.act_window">
+        <field name="name">Onboarding Stage</field>
+        <field name="res_model">crm.stage</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="crm_stage_tree"/>
+    </record>
+</odoo>

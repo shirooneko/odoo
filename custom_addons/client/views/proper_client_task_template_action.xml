@@ -1,0 +1,10 @@
+<odoo>
+    <record id="task_template_action" model="ir.actions.act_window">
+        <field name="name">Task Template</field>
+        <field name="res_model">proper.client.onboarding.task.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_proper_client_task_template_tree"/>
+        <field name="search_view_id" ref="view_proper_client_task_template_search"/>
+        <field name="context">{'search_default_group_by_state': True}</field>
+    </record>
+</odoo>

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="view_proper_client_task_template_search" model="ir.ui.view">
+        <field name="name">client.onboarding.task.template.search</field>
+        <field name="model">proper.client.onboarding.task.template</field>
+        <field name="arch" type="xml">
+            <search string="Task Template">
+                <field name="name"/>
+                <field name="state_id"/>
+                <filter string="State" name="group_by_state" context="{'group_by':'state_id'}"/>
+                <filter string="Optional" name="filter_optional" domain="[('is_optional','=',True)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_proper_client_task_template_tree" model="ir.ui.view">
+        <field name="name">client.onboarding.task.template.tree</field>
+        <field name="model">proper.client.onboarding.task.template</field>
+        <field name="arch" type="xml">
+            <tree string="Task Template">
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="state_id" />
+                <field name="target_days_completed"/>
+                <field name="is_optional" widget="boolean_toggle"  />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_proper_client_task_template_form" model="ir.ui.view">
+        <field name="name">client.onboarding.task.template.form</field>
+        <field name="model">proper.client.onboarding.task.template</field>
+        <field name="arch" type="xml">
+            <form string="Task Template">
+                <sheet>
+                    <group>
+                        <field name="name" field_id="name_0" />
+                        <field name="state_id" can_create="True" can_write="True"
+                            field_id="state_id_0" />
+                        <field name="target_days_completed" field_id="target_days_completed_0" />
+                        <field name="is_optional" widget="boolean_toggle" field_id="is_optional_0" />
+                    </group>
+                    <notebook>
+                        <page name="notes" string="Notes">
+                            <field name="notes" field_id="notes_0" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

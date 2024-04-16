@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="terminate_contract_wizard_form_view" model="ir.ui.view">
+        <field name="name">terminate.contract.wizard.form</field>
+        <field name="model">terminate.contract.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Confirm Terminate Contract">
+                <div class="alert alert-danger" role="alert">
+                    To confirm your action please write the company name
+                </div>
+                <field name="company_name_repeat" style="width: 90%; margin-bottom: 30px;" />
+                <field name="company_name_match" style="width: 10%; margin-bottom: 30px;" />
+
+                <div class="fw-bold">
+                    Termination Reason
+                </div>
+                <field name="reason_for_termination" />
+                <footer>
+                    <button string="Terminate Contract" type="object" name="terminate_contract"
+                        class="btn-primary" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
