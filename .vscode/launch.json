@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Odoo",
+      "type": "python",
+      "request": "launch",
+      "stopOnEntry": false,
+      "python": "${command:python.interpreterPath}",
+      "program": "${workspaceFolder}/odoo-bin",
+      "console": "integratedTerminal",
+      "args": [
+        "--config=${workspaceFolder}/odoo.conf",
+        "--database=yansyah",
+        "--addons-path",
+        "${workspaceFolder}/addons, ${workspaceFolder}/custom_addons",
+        "--dev=xml",
+        "-u",
+        "client",
+      ]
+    }
+  ]
+}

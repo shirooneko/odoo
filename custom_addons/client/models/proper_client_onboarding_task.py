@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 class ClientOnboardingTask(models.Model):
     _name = 'proper.client.onboarding.task'
@@ -20,3 +20,4 @@ class ClientOnboardingTask(models.Model):
     state_id = fields.Many2one('proper.client.onboarding.state', string='State')
     target_days_completed = fields.Integer(string='Target Days')
     task_template_id = fields.Many2one('proper.client.onboarding.task.template', string='Task')
+

@@ -49,14 +49,31 @@
                 <header>
                     <button name="action_contract" type="object" class="btn btn-danger"
                         string="Terminate Contract" invisible="current_contract_state != 'active'" />
-                    <field name="current_contract_state" />
+                    <button name="action_target_onboarding" type="object" class="btn btn-primary"
+                        string="Generate Onboarding" invisible="current_contract_state != 'active' or onboarding_id != 0" />
+                    <field name="onboarding_id" invisible="1" can_create="True" can_write="True" />
                 </header>
             </xpath>
             <xpath expr="//field[@name='avatar_128']" position="replace">
                 <field name="avatar_128" invisible="1" class="pr-3" />
             </xpath>
             <xpath expr="//field[@name='image_1920']" position="replace">
-                <field name="image_1920" widget="image" class="oe_avatar " options="{&quot;preview_image&quot;: &quot;avatar_128&quot;}" style="margin-right: 12%;" on_change="1"/>
+                <field name="image_1920" widget="image" class="oe_avatar "
+                    options="{&quot;preview_image&quot;: &quot;avatar_128&quot;}"
+                    style="margin-right: 12%;" on_change="1" />
+            </xpath>
+            <xpath expr="//button[@name='action_view_certifications']" position="after">
+                <button name="action_view_onboarding" type="object" invisible="not onboarding_id" string="Onboarding"
+                    class="oe_stat_button" icon="fa-tasks"> 
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="latest_contract" />
+                <field name="current_contract_state" widget="badge"
+                    decoration-info="current_contract_state == 'draft'"
+                    decoration-warning="current_contract_state == 'terminated'"
+                    decoration-danger="current_contract_state == 'expired'"
+                    decoration-success="current_contract_state == 'active'" />
             </xpath>
             <!-- Ubah nama halaman "Sales & Purchases" menjadi "Sales" -->
             <xpath expr="//page[@name='sales_purchases']" position="attributes">

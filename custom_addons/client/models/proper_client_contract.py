@@ -76,10 +76,16 @@ class ProperClientContract(models.Model):
 
         return formatted_contract_number
     
-    @api.constrains('state')
+    @api.constrains('state', 'partner_id')
     def _check_active_contract(self):
         for record in self:
-            if record.state == 'active':
-                active_contracts = self.search([('state', '=', 'active'), ('id', '!=', record.id)])
-                if active_contracts:
-                    raise exceptions.UserError("There is already an active contract. You cannot create another active contract.")
+            active_contracts = self.search([
+                ('state', '=', 'active'), 
+                ('partner_id', '=', record.partner_id.id),  # check for the same partner_id
+                ('id', '!=', record.id)
+            ])
+            if active_contracts:
+                if record.state == 'active':
+                    raise exceptions.UserError("There is already an active contract for this partner. You cannot create another active contract.")
+                elif record.state == 'draft':
+                    raise exceptions.UserError("There is already an active contract for this partner. You cannot create a draft contract.")

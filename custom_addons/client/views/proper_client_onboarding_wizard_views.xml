@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="proper_client_onboarding_wizard_view" model="ir.ui.view">
+        <field name="name">proper.client.onboarding.wizard.form</field>
+        <field name="model">proper.client.onboarding.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Confirm Terminate Contract">
+                <group>
+                    <field name="target_date"/>
+                </group>
+                <footer>
+                    <button string="Generate Onboarding" type="object" name="generate_onboarding"
+                        class="btn-primary" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

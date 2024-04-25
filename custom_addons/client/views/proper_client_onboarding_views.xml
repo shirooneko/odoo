@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_proper_client_onboarding_formm" model="ir.ui.view">
+        <field name="name">proper.client.onboarding.form</field>
+        <field name="model">proper.client.onboarding</field>
+        <field name="arch" type="xml">
+            <form string="Client Onboarding">
+                <header>
+                    <field name="state_id" widget="statusbar" options="{'clickable': True}"/>
+                </header>                            
+                <sheet>
+                    <h2><field name="partner_id" readonly="1"/></h2>
+                    <group>
+                        <field name="target_date"/>
+                        <field name="actual_date" readonly="1"/>
+                        <field name="state_id" />
+                    </group>
+                    <notebook>
+                        <!-- Tab for ongoing tasks -->
+                        <page string="Ongoing Task">
+                            <field name="todo_task_ids">
+                                <tree create="1">
+                                    <field name="name"/>
+                                    <field name="target_days_completed"/>
+                                    <field name="planned_completion_date"/>
+                                    <field name="attachment"/>
+                                    <field name="is_completed" widget="boolean_toggle"/>
+                                    <field name="is_optional" widget="boolean_toggle"/>
+                                </tree>
+                                <form string="Task Template" create="1" edit="bottom" edit_mode="inline">
+                                    <sheet>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="target_days_completed"/>
+                                            <field name="planned_completion_date"/>
+                                            <field name="attachment"/>
+                                            <field name="is_completed" widget="boolean_toggle"/>
+                                            <field name="is_optional" widget="boolean_toggle"/>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>                        
+                        <!-- Tab for completed tasks -->
+                        <page string="Completed Task">
+                            <field name="todo_task_ids"> 
+                                <tree create="1" >
+                                    <field name="task_template_id"/>
+                                    <field name="is_completed" widget="boolean_toggle"/>
+                                    <field name="planned_completion_date"/>
+                                    <field name="actual_completion_date"/>
+                                    <field name="delta_completion_days"/>
+                                    <field name="completed_by"/>
+                                </tree>
+                                <form string="Task Template" create="1" edit="bottom" edit_mode="inline">
+                                    <sheet>
+                                        <group>
+                                            <field name="task_template_id"/>
+                                            <field name="is_completed" widget="boolean_toggle"/>
+                                            <field name="planned_completion_date"/>
+                                            <field name="actual_completion_date"/>
+                                            <field name="delta_completion_days"/>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                        <!-- Tab for notes -->
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+</odoo>

@@ -22,6 +22,8 @@ ini deskripsi    """,
     # always loaded
     'data': [
     'security/ir.model.access.csv',
+    'views/proper_client_onboarding_views.xml',
+    'views/proper_client_onboarding_wizard_views.xml',
     'views/terminate_contract_wizard_views.xml',
     'views/proper_client_view.xml',
     'views/proper_client_action.xml',
