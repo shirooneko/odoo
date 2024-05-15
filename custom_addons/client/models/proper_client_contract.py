@@ -6,8 +6,8 @@ class ProperClientContract(models.Model):
     _name = 'proper.client.contract'
     _description = 'Propertek Client Contract'
     _order = 'write_date desc'
-    
 
+    # Fields
     active = fields.Boolean('Active', default=True)
     attachment = fields.Binary('Contract Attachment')
     contract_number = fields.Char('Contract Number', default=lambda self: self._default_contract_number())
@@ -39,6 +39,7 @@ class ProperClientContract(models.Model):
     write_uid = fields.Many2one('res.users', 'Last Updated by')
     partner_id = fields.Many2one('res.partner', string='Partner')
 
+    # Computed Fields
     @api.depends('date', 'duration', 'duration_unit')
     def _compute_end_date(self):
         for record in self:
@@ -63,6 +64,7 @@ class ProperClientContract(models.Model):
                 else:  # today > record.end_date
                     record.state = 'expired'
 
+    # Default Methods
     @api.model
     def _default_contract_number(self):
         # Get the number of existing contracts
@@ -76,6 +78,7 @@ class ProperClientContract(models.Model):
 
         return formatted_contract_number
     
+    # Constraints
     @api.constrains('state', 'partner_id')
     def _check_active_contract(self):
         for record in self:

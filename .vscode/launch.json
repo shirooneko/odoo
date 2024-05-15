@@ -16,7 +16,7 @@
         "${workspaceFolder}/addons, ${workspaceFolder}/custom_addons",
         "--dev=xml",
         "-u",
-        "client",
+        "propertek_dashboard"
       ]
     }
   ]

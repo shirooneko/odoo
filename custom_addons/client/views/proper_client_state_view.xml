@@ -29,19 +29,19 @@
                     </group>
                     <notebook>
                         <page name="task" string="Tasks">
-                            <field name="task_ids" context="{'default_state_id': id}">
+                            <field name="task_template_id" context="{'default_state_id': id}">
                                 <tree>
                                     <field name="sequence" widget="handle"/>
                                     <field name="name" tooltip="notes"/>
                                     <field name="target_days_completed"/>
-                                    <field name="is_optional" widget="boolean_toggle"/>
+                                    <field name="is_optional" options="{'autosave': False}" widget="boolean_toggle"/>
                                 </tree>
                                 <form string="Task">
                                     <sheet>
                                         <group>
                                             <field name="name" field_id="name_0"/>
                                             <field name="target_days_completed" />
-                                            <field name="is_optional" widget="boolean_toggle"/>
+                                            <field name="is_optional" options="{'autosave': False}" widget="boolean_toggle"/>
                                         </group>
                                         <notebook>
                                             <page name="notes" string="Notes">

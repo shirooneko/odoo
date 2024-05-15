@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_propertek_dashboard_propertek_dashboard,propertek_dashboard.propertek_dashboard,model_propertek_dashboard_propertek_dashboard,base.group_user,1,1,1,1

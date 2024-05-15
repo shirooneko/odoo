@@ -10,7 +10,7 @@
                 </div>
                 <field name="company_name_repeat" style="width: 90%; margin-bottom: 30px;" />
                 <field name="company_name_match" style="width: 10%; margin-bottom: 30px;" />
-
+                <field name="partner_id" invisible="1" />
                 <div class="fw-bold">
                     Termination Reason
                 </div>

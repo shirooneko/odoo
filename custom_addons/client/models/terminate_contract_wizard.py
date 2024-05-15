@@ -8,20 +8,21 @@ class TerminateContractWizard(models.TransientModel):
     company_name_repeat = fields.Char()
     company_name = fields.Char(string='Company Name', readonly=True)
     company_name_match = fields.Boolean(string='Company Name Match', compute='_compute_company_name_match', readonly=True, store=False)
-    client_contract_ids = fields.Many2one('proper.client.contract', string='Contract', required=True)
+    client_contract_ids = fields.Many2one('proper.client.contract', string='Contract')
     reason_for_termination = fields.Text(string='Reason for Termination')
+    partner_id = fields.Many2one('res.partner', string='Partners')
+
 
     @api.depends('company_name', 'company_name_repeat')
     def _compute_company_name_match(self):
         for record in self:
             record.company_name_match = record.company_name == record.company_name_repeat
 
-
     def terminate_contract(self):
         if self.company_name != self.company_name_repeat:
             raise UserError("The entered company name does not match the actual company name.")
         
-        active_contracts = self.env['proper.client.contract'].search([('state', '=', 'active')])
+        active_contracts = self.env['proper.client.contract'].search([('partner_id', '=', self.partner_id.id), ('state', '=', 'active')])
 
         fields = self.env['proper.client.contract'].fields_get()
         if 'reason_for_termination' in fields:
@@ -31,4 +32,4 @@ class TerminateContractWizard(models.TransientModel):
 
         for contract in active_contracts:
             contract.partner_id._compute_current_contract_state()
-            
+

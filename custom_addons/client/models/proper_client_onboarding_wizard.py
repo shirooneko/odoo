@@ -23,6 +23,22 @@ class PartnerOnboardingWizard(models.TransientModel):
                 'attachment': self.attachment,
             }
             onboarding = self.env['proper.client.onboarding'].create(vals)
+
+            # Copy tasks from task templates
+            if onboarding.task_template_id:
+                task_template = onboarding.task_template_id
+                for task in task_template.task_ids:
+                    task_vals = {
+                        'name': task.name,
+                        'planned_completion_date': task.planned_completion_date,
+                        'attachment': task.attachment,
+                        'state_id': task.state_id.id,
+                        'is_optional': task.is_optional,
+                        'task_template_id': task_template.id,
+                        'onboarding_id': onboarding.id,
+                    }
+                    self.env['proper.client.onboarding.task'].create(task_vals)
+
             self.partner_id.write({'onboarding_id': onboarding.id})
         else:
             raise UserError("Target End Date is required.")

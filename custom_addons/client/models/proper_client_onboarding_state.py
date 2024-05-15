@@ -17,7 +17,7 @@ class ClientOnboardingState(models.Model):
     is_initial = fields.Boolean(string='Initial State?')
     name = fields.Char(string='Name')
     sequence = fields.Integer(string='Sequence')
-    task_ids = fields.One2many('proper.client.onboarding.task', 'state_id')
+    task_template_id = fields.One2many('proper.client.onboarding.task.template', 'state_id')
 
     @api.constrains('is_final', 'is_initial')
     def _check_state(self):
@@ -36,3 +36,7 @@ class ClientOnboardingState(models.Model):
         final_states = self.search([('is_final', '=', True)])
         if len(final_states) > 1:
             raise ValidationError("There can only be one final state.")
+        
+    
+    
+

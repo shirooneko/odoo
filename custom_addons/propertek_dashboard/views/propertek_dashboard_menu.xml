@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="action_owl_propertek_dashboard" model="ir.actions.client">
+            <field name="name">Propertek Dashboard Center</field>
+            <field name="tag">owl.action_propertek_dashboard_js</field>
+        </record>
+
+        <record id="action_owl_propertek_dashboard_summary" model="ir.actions.client">
+            <field name="name">Summary</field>
+            <field name="tag">owl.action_propertek_dashboard_js</field>
+        </record>
+
+        <record id="action_owl_propertek_dashboard_import_data" model="ir.actions.client">
+            <field name="name">Import Data</field>
+            <field name="tag">owl.action_propertek_dashboard_js</field>
+        </record>
+
+        <record id="action_owl_propertek_dashboard_complain" model="ir.actions.client">
+            <field name="name">Complain</field>
+            <field name="tag">owl.action_propertek_dashboard_js</field>
+        </record>
+
+        <record id="action_owl_propertek_dashboard_property" model="ir.actions.client">
+            <field name="name">Property</field>
+            <field name="tag">owl.action_propertek_dashboard_js</field>
+        </record>
+
+        <record id="action_owl_propertek_dashboard_finance" model="ir.actions.client">
+            <field name="name">Finance</field>
+            <field name="tag">owl.action_propertek_dashboard_js</field>
+        </record>
+
+        <menuitem name="Propertek Dashboard Center" id="menu_owl_tutorial" sequence="10">
+            <menuitem name="Propertek Dashboard Center" id="menu_owl_propertek_dashboard" sequence="10" action="action_owl_propertek_dashboard"/>
+
+            <menuitem name="Summary" id="menu_owl_propertek_dashboard_summary" sequence="30" action="action_owl_propertek_dashboard_summary" />
+
+            <menuitem name="Import Data" id="menu_owl_propertek_dashboard_import_data" sequence="40" action="action_owl_propertek_dashboard_import_data" />
+
+            <menuitem name="Complain" id="menu_owl_propertek_dashboard_Complain" sequence="40" action="action_owl_propertek_dashboard_complain" />
+
+            <menuitem name="Property" id="menu_owl_propertek_dashboard_property" sequence="50" action="action_owl_propertek_dashboard_property" />
+
+            <menuitem name="Finance" id="menu_owl_propertek_dashboard_finance" sequence="60" action="action_owl_propertek_dashboard_finance" />
+        </menuitem>
+    </data>
+</odoo>
